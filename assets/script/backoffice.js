@@ -11,6 +11,8 @@ const descriptionInput = document.getElementById("description");
 const brandInput = document.getElementById("brand");
 const imageUrlInput = document.getElementById("imageUrl");
 const priceInput = document.getElementById("price");
+const deleteButton = document.getElementById("delete-button");
+const resetButton = document.querySelector('button[type="reset"]');
 
 // uguale a details perché se nell'URL ho l'ID modifico l'oggetto, altrmenti lo creo
 const params = new URLSearchParams(window.location.search);
@@ -65,6 +67,10 @@ const fillForm = () => {
 
 fillForm();
 
+if (id) {
+  deleteButton.classList.remove("d-none");
+}
+
 productForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -106,4 +112,41 @@ productForm.addEventListener("submit", (e) => {
       console.log(err);
       alert("Errore!");
     });
+});
+
+// conferma sul reset
+resetButton.addEventListener("click", (e) => {
+  const confirmReset = confirm("Sei sicura di voler resettare il form?");
+
+  if (!confirmReset) {
+    e.preventDefault();
+  }
+});
+
+// per rimuovere
+
+deleteButton.addEventListener("click", () => {
+  const confirmDelete = confirm(
+    "Sei sicura di voler eliminare questo prodotto?",
+  );
+  if (confirmDelete) {
+    fetch(product + id, {
+      method: "DELETE",
+      headers: {
+        Authorization: authorization,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Prodotto eliminato!");
+          window.location.href = "./index.html";
+        } else {
+          throw new Error("Errore nell'eliminazione del prodotto");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Errore durante l'eliminazione");
+      });
+  }
 });

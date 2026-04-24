@@ -32,18 +32,33 @@ const getsingleProduct = () => {
     .then((singleProduct) => {
       console.log(singleProduct);
       detailsContainer.innerHTML = `
-         <div class="card shadow-sm">
-      <img src="${singleProduct.imageUrl}" class="card-img-top" />
-      <div class="card-body">
-      <h2>${singleProduct.name}</h2>
-      <p class="text-muted">${singleProduct.brand}</p>
-      <p>${singleProduct.description}</p>
-      <h4 class="fw-bold">${singleProduct.price}€</h4>
-      <a href="./backoffice.html?id=${singleProduct._id}" class="btn btn-dark mt-3">
-          Modifica prodotto
-        </a>
-      </div>
-    </div>`;
+      <div class="row g-5 align-items-center">
+      <div class="col-12 col-lg-6">
+      <img 
+        src="${singleProduct.imageUrl}" 
+        class="img-fluid rounded-4 details-img"
+      />
+    </div>      
+     <div class="col-12 col-lg-6">
+      <p class="text-uppercase small text-muted mb-2">
+        ${singleProduct.brand}
+      </p>
+     <h1 class="fw-bold mb-3">
+        ${singleProduct.name}
+      </h1>
+      <p class="mb-4">
+        ${singleProduct.description}
+      </p>
+      <h3 class="fw-bold mb-4">
+        ${singleProduct.price}€
+      </h3>
+      <a href="./backoffice.html?id=${singleProduct._id}" 
+         class="btn btn-dark px-4 py-2 rounded-pill">
+        Modifica prodotto
+      </a>
+    </div>
+
+  </div>`;
     })
     .catch((err) => {
       console.log(err);

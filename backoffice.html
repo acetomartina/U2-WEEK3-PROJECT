@@ -14,46 +14,93 @@
   </head>
   <body class="bg-light">
     <header>
-      <nav class="navbar navbar-dark bg-dark">
+      <nav class="navbar navbar-dark">
         <div class="container">
-          <a class="navbar-brand" href="./index.html">CRUDazon</a>
-          <a class="btn btn-outline-light" href="./index.html">Homepage</a>
+          <a class="navbar-brand fw-bold" href="./index.html">CRUDazon</a>
+          <a
+            class="btn btn-outline-light rounded-pill px-4"
+            href="./index.html"
+          >
+            Homepage
+          </a>
         </div>
       </nav>
+      <div class="py-5 backoffice-hero container text-center">
+        <p class="text-uppercase small fw-semibold mb-2">Admin panel</p>
+        <h1 class="fw-bold">Gestione prodotti</h1>
+        <p class="text-muted">Aggiungi, modifica o elimina le tue candele</p>
+      </div>
     </header>
 
-    <main class="container py-5">
-      <h1 class="mb-4">Backoffice prodotti</h1>
+    <main class="container pb-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <form id="product-form" class="form-card p-4 p-md-5">
+            <h3 class="mb-4 fw-bold">Dettagli prodotto</h3>
 
-      <form id="product-form" class="bg-white p-4 rounded shadow-sm">
-        <div class="mb-3">
-          <label for="name" class="form-label">Nome prodotto</label>
-          <input id="name" type="text" class="form-control" />
+            <div class="mb-3">
+              <label class="form-label">Nome prodotto</label>
+              <input
+                id="name"
+                type="text"
+                class="form-control"
+                placeholder="Vanilla Moon"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Descrizione</label>
+              <textarea
+                id="description"
+                class="form-control"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Brand</label>
+              <input
+                id="brand"
+                type="text"
+                class="form-control"
+                placeholder="Luna Atelier"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">URL immagine</label>
+              <input id="imageUrl" type="text" class="form-control" />
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Prezzo (€)</label>
+              <input id="price" type="number" class="form-control" />
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <button type="submit" class="btn btn-primary px-4">
+                Salva prodotto
+              </button>
+
+              <button
+                id="reset-button"
+                type="reset"
+                class="btn btn-outline-secondary px-4"
+              >
+                Reset
+              </button>
+
+              <button
+                id="delete-button"
+                type="button"
+                class="btn btn-danger px-4 d-none ms-auto"
+              >
+                Elimina
+              </button>
+            </div>
+          </form>
         </div>
-
-        <div class="mb-3">
-          <label for="description" class="form-label">Descrizione</label>
-          <textarea id="description" class="form-control"></textarea>
-        </div>
-
-        <div class="mb-3">
-          <label for="brand" class="form-label">Brand</label>
-          <input id="brand" type="text" class="form-control" />
-        </div>
-
-        <div class="mb-3">
-          <label for="imageUrl" class="form-label">URL immagine</label>
-          <input id="imageUrl" type="text" class="form-control" />
-        </div>
-
-        <div class="mb-3">
-          <label for="price" class="form-label">Prezzo</label>
-          <input id="price" type="number" class="form-control" />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Salva prodotto</button>
-        <button type="reset" class="btn btn-secondary">Reset</button>
-      </form>
+      </div>
     </main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
